@@ -1,10 +1,24 @@
 version: "3.9"
+
 services:
-  trading-bot:
-    build: .
-    restart: always
+  trader:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: btc_intraday_bot:latest
+    restart: unless-stopped
     env_file:
-      - .env
+      - .env        # BYBIT_API_KEY/SECRET, TELEGRAM_TOKEN/CHAT_ID и т.д.
+    environment:
+      - PYTHONUNBUFFERED=1
+      - TZ=Europe/Amsterdam
     volumes:
-      - .:/app
-    command: python bot.py
+      - ./config.yaml:/app/config.yaml:ro         # конфиг из репо
+      - ./logs:/app/logs                          # логи и trades.csv
+      - ./runtime_state.json:/app/runtime_state.json # состояние бота (персистентно)
+    healthcheck:
+      test: ["CMD-SHELL", "python -c 'print(1)'"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
