@@ -1,0 +1,12 @@
+pybit>=5.0.0
+pandas==2.3.2
+numpy==1.26.4
+ta==0.11.0
+aiogram==3.22.0
+pyyaml==6.0.2
+requests==2.32.3
+fastapi==0.117.1
+uvicorn==0.36.0
+websocket-client==1.8.0
+python-dotenv==1.0.1
+scipy==1.14.1

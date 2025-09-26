@@ -1,0 +1,60 @@
+# --- OS/IDE ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.code-workspace
+
+# --- Python ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pkl
+*.egg-info/
+.build/
+build/
+dist/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+.ipynb_checkpoints/
+.python-version
+.cache/
+
+# --- Virtual envs ---
+.venv/
+venv/
+env/
+
+# --- Logs & runtime/state ---
+logs/
+runtime_state.json
+*.log
+logs/*.csv
+
+# --- Secrets / env (ВАЖНО) ---
+.env
+.env.*
+*.env
+*.env.*
+*.key
+*.pem
+secrets.json
+secrets/*.json
+
+# --- Data/analytics artifacts ---
+*.sqlite
+*.db
+*.db-journal
+
+# --- Docker aux ---
+**/.dockerignore
+
+# --- Local config overrides ---
+config.local.yaml
+config.override.yaml

@@ -1,0 +1,73 @@
+# Биржа / режим
+symbol: BTCUSDT
+testnet: false
+lower_tf: "1"
+
+# Торговля — старт в стопе (включается /on из Telegram)
+# (логика включения/выключения хранится в telegram_bot.py)
+# Для удобства оставим параметр веса и пороги ниже.
+
+# риск/входы
+risk_pct: 0.01
+signal_threshold: 1.8
+cooldown_sec: 30
+
+# динамика SL/TP
+atr_k_sl: 1.0
+atr_k_tp1: 1.0
+atr_k_tp2: 2.0
+atr_k_be: 0.5
+trailing: supertrend
+trailing_k_atr: 1.0
+
+# fallback (если ATR временно недоступен)
+fallback_sl_pct: 0.008
+fallback_tp_pct: 0.012
+
+# SuperTrend
+supertrend_period: 10
+supertrend_multiplier: 3.0
+
+# Тестовая команда /testtrade
+test_trade_size: 10
+
+# --- Веса скоринга и параметры объёма/волы ---
+weights:
+  TA: 0.45
+  BybitData: 0.25
+  Volume: 0.15
+  Volatility: 0.15
+
+volume:
+  surge_hi: 1.5
+  surge_lo: 0.7
+  score_hi: 0.6
+  score_lo: -0.4
+
+volatility:
+  atr_ma_window: 20
+  hot_ratio: 1.2
+  cold_ratio: 0.8
+  score_hot: 0.3
+  score_cold: -0.3
+  z_momentum_hi: 0.6
+  z_momentum_lo: -0.6
+  score_z_hi: 0.2
+  score_z_lo: -0.2
+
+ta:
+  ema_stack_bonus: 0.4
+  adx_trend: 25
+  adx_score: 0.2
+  rsi_hot: 70
+  rsi_cold: 30
+  rsi_score: -0.1
+  vwap_alignment: 0.1
+
+bybit:
+  funding_pos: 0.05
+  funding_neg: -0.05
+  basis_pos: 0.1
+  basis_neg: -0.1
+  lsr_pos: 0.1
+  lsr_neg: -0.1
